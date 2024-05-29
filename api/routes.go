@@ -6,4 +6,6 @@ import (
 
 func RegisterRoutes(router *gin.Engine) {
 	router.POST("/submit-feature", submitFeature)
+	router.GET("/get-features", getFeatures)
+
 }

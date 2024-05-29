@@ -11,23 +11,22 @@ import (
 
 var Client *mongo.Client
 
-
 func InitMongoDB() {
-    var err error
+	var err error
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel() 
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:27019")
-    log.Println("Connecting to MongoDB...")
+	defer cancel()
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27018")
+	log.Println("Connecting to MongoDB...")
 	Client, err = mongo.Connect(ctx, clientOptions)
 
-    if err != nil {
-        log.Fatal(err)
-    }
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    err = Client.Ping(ctx, nil)
-    if err != nil {
-        log.Fatal(err)
-    }
+	err = Client.Ping(ctx, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    log.Println("Connected to MongoDB!")
+	log.Println("Connected to MongoDB!")
 }
